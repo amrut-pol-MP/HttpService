@@ -1,6 +1,6 @@
 using Grpc.Net.Client;
 using HttpService;
-using HttpService.Services;
+using HttpService.Services.Organization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +10,7 @@ builder.Services.AddGrpcClient<OrganizationServices.OrganizationServicesClient>(
 });
 
 // Add services.
-builder.Services.AddScoped<IOrganizationService, HttpService.Services.OrganizationService>();
+builder.Services.AddScoped<IOrganizationService, OrganizationService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

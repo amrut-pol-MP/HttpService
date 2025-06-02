@@ -3,7 +3,7 @@ using HttpService.Models.Common;
 using HttpService.Models.Organization;
 using Microsoft.AspNetCore.Http;
 
-namespace HttpService.Services
+namespace HttpService.Services.Organization
 {
     public class OrganizationService : IOrganizationService
     {
@@ -40,14 +40,14 @@ namespace HttpService.Services
         {
             var req = new GetOrganizationRequest
             {
-                Id= id
+                Id = id
             };
 
             var response = _client.GetOrganization(req);
             var result = new OrganizationResponse
             {
-                Name= response.Name,
-                Address= response.Address,
+                Name = response.Name,
+                Address = response.Address,
                 CreatedAt = response.CreatedAt,
                 UpdatedAt = response.UpdatedAt
             };
@@ -68,7 +68,7 @@ namespace HttpService.Services
             var response = _client.QueryOrganizations(request);
             var result = new QueryOrganizationResponse
             {
-                Pagination = new Pagination(response.Page, response.PageSize,response.Total),
+                Pagination = new Pagination(response.Page, response.PageSize, response.Total),
                 Result = response.OrganizationList.Select(x => new OrganizationResponse
                 {
                     Name = x.Name,
@@ -99,7 +99,6 @@ namespace HttpService.Services
 
             _client.DeleteOrganization(request);
         }
-
     }
 }
 

@@ -1,7 +1,7 @@
 ﻿using Grpc.Core;
 using HttpService.Models.Common;
 using HttpService.Models.Organization;
-using HttpService.Services;
+using HttpService.Services.Organization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
