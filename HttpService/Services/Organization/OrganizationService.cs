@@ -73,7 +73,8 @@ namespace HttpService.Services.Organization
                 {
                     Name = x.Name,
                     Address = x.Address,
-                    CreatedAt = x.CreatedAt
+                    CreatedAt = x.CreatedAt,
+                    UpdatedAt = x.UpdatedAt
                 }).ToList()
             };
             return result;

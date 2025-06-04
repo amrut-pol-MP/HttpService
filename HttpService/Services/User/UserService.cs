@@ -74,7 +74,8 @@ namespace HttpService.Services.User
                     Name = x.Name,
                     UserName = x.Username,
                     Email = x.Email,
-                    CreatedAt = x.CreatedAt
+                    CreatedAt = x.CreatedAt,
+                    UpdatedAt = x.UpdatedAt
                 }).ToList()
             };
             return result;
