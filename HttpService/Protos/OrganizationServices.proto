@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "HttpService";
+option csharp_namespace = "GrpcService";
 
 package OrganizationServices;
 import "google/protobuf/wrappers.proto";

@@ -1,6 +1,6 @@
 ﻿using HttpService.Models.Common;
 
-namespace HttpService.Models.Organization
+namespace HttpService.Services.Organization.Models
 {
     public class QueryOrganizationResponse
     {

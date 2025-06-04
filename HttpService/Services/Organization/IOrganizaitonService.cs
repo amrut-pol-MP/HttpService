@@ -1,5 +1,5 @@
-﻿using HttpService.Models.Organization;
-using Microsoft.AspNetCore.Http;
+﻿using HttpService.Models.Common;
+using HttpService.Services.Organization.Models;
 
 namespace HttpService.Services.Organization
 {

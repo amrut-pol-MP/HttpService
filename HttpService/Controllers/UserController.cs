@@ -1,36 +1,34 @@
 ﻿using Grpc.Core;
 using HttpService.Models.Common;
-using HttpService.Services.Organization;
-using HttpService.Services.Organization.Models;
+using HttpService.Services.User;
+using HttpService.Services.User.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Diagnostics;
 
 namespace HttpService.Controllers
 {
     [ApiController]
-    [Route("api/Organization")]
-    public class OrganizationController : ControllerBase
+    [Route("api/User")]
+    public class UserController : ControllerBase
     {
-        private readonly IOrganizationService _organizationService;
+        private readonly IUserService _userService;
 
-        public OrganizationController(IOrganizationService organizationService)
+        public UserController(IUserService userService)
         {
-            _organizationService = organizationService;
+            _userService = userService;
         }
         /// <summary>
-        /// Create Organization.
+        /// Create User.
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost("CreateOrganization")]
-        public IActionResult CreateOrganization(CreateOrganizationCommandRequest request)
+        [HttpPost("CreateUser")]
+        public IActionResult CreateUser(CreateUserCommandRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             try
             {
-                var response = _organizationService.CreateOrganization(request);
+                var response = _userService.CreateUser(request);
                 return Ok(response);
             }
             catch (RpcException e)
@@ -41,16 +39,16 @@ namespace HttpService.Controllers
         }
 
         /// <summary>
-        /// Get organization data by Id.
+        /// Get user data by Id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("GetOrganization/{id}")]
-        public IActionResult GetOrganization(int id)
+        [HttpGet("GetUser/{id}")]
+        public IActionResult GetUser(int id)
         {
             try
             {
-                var res = _organizationService.GetOrganization(id);
+                var res = _userService.GetUser(id);
                 return Ok(res);
             }
             catch (RpcException e)
@@ -61,16 +59,16 @@ namespace HttpService.Controllers
         }
 
         /// <summary>
-        /// Query organization.
+        /// Query users.
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpGet("QueryOrganizations")]
-        public IActionResult QueryOrganizations([FromQuery] QueryOrganizationCommandRequest request)
+        [HttpGet("QueryUsers")]
+        public IActionResult QueryUsers([FromQuery] QueryUserCommandRequest request)
         {
             try
             {
-                var result = _organizationService.QueryOrganizations(request);
+                var result = _userService.QueryUsers(request);
                 if (result == null)
                 {
                     return BadRequest();
@@ -86,16 +84,16 @@ namespace HttpService.Controllers
         }
 
         /// <summary>
-        /// Update organization.
+        /// Update user.
         /// </summary>
-        [HttpPut("UpdateOrganization/{id}")]
-        public IActionResult UpdateOrganization(int id, [FromBody] UpdateOrganizationCommandRequest request)
+        [HttpPut("UpdateUser/{id}")]
+        public IActionResult UpdateUser(int id, [FromBody] UpdateUserCommandRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             try
             {
-                _organizationService.UpdateOrganization(id, request);
+                _userService.UpdateUser(id, request);
                 return new NoContentResult();
             }
             catch (RpcException ex)
@@ -105,12 +103,12 @@ namespace HttpService.Controllers
             }
         }
 
-        [HttpDelete("DeleteOrganization/{id}")]
-        public IActionResult DeleteOrganization(int id)
+        [HttpDelete("DeleteUser/{id}")]
+        public IActionResult DeleteUser(int id)
         {
             try
             {
-                _organizationService.DeleteOrganization(id);
+                _userService.DeleteUser(id);
 
                 return new NoContentResult();
             }

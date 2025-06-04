@@ -1,4 +1,4 @@
-﻿namespace HttpService.Models.Organization
+﻿namespace HttpService.Models.Common
 {
     public class ResponseId
     {

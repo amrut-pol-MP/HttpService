@@ -1,7 +1,7 @@
 ﻿using Grpc.Core;
+using GrpcService;
 using HttpService.Models.Common;
-using HttpService.Models.Organization;
-using Microsoft.AspNetCore.Http;
+using HttpService.Services.Organization.Models;
 
 namespace HttpService.Services.Organization
 {
