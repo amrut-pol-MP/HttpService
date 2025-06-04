@@ -1,5 +1,5 @@
 ﻿using Grpc.Core;
-using HttpService.Models.Common;
+using HttpService.Configuration;
 using HttpService.Services.Organization;
 using HttpService.Services.Organization.Models;
 using Microsoft.AspNetCore.Mvc;

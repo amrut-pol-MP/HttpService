@@ -1,23 +1,17 @@
-using GrpcService;
-using HttpService;
+using HttpService.Configuration;
 using HttpService.Services.Organization;
 using HttpService.Services.User;
+using HttpService.Services.UserOrganizationAssociation;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // gRPC services
-builder.Services.AddGrpcClient<OrganizationServices.OrganizationServicesClient>(o =>
-{
-    o.Address = new Uri("https://localhost:5117");
-});
-builder.Services.AddGrpcClient<UserServices.UserServicesClient>(o =>
-{
-    o.Address = new Uri("https://localhost:5117");
-});
+builder.Services.AddGrpcClients(builder.Configuration["GrpcServices:ServiceUrl"]);
 
 // Add services.
 builder.Services.AddScoped<IOrganizationService, OrganizationService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserOrganizationAssociationService, UserOrganizationAssociationService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

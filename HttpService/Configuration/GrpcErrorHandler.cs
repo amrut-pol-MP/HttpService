@@ -1,7 +1,7 @@
 ﻿using Grpc.Core;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HttpService.Models.Common
+namespace HttpService.Configuration
 {
     public static class GrpcErrorHandler
     {

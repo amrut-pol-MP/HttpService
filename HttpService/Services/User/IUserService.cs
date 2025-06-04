@@ -1,5 +1,4 @@
 ﻿
-using GrpcService;
 using HttpService.Models.Common;
 using HttpService.Services.User.Models;
 
